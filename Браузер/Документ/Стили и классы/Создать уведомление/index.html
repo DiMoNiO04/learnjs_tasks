@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		function showNotification({top = 0, left = 0, className, html}){
+			let notification = document.createElement('div');
+			if(className) {
+				notification.classList.add(className);
+			}
+
+			notification.style.top = top + 'px';
+			notification.style.left = left + 'px';
+
+			notification.innerHTML = html;
+			document.body.append(notification);
+
+			setTimeout(() => notification.remove(), 1500)
+		}
+
+		let i = 1;
+		setInterval(() => {
+			showNotification({
+				top: 10,
+				left: 10,
+				html: 'Hello ' + i++,
+				className: "welcome"
+			})
+		}, 2000)
+	</script>
+
+</body>
+</html>
